@@ -1,0 +1,65 @@
+from sklearn.datasets import load_iris
+iris = load_iris()
+
+How to split data 
+
+iris.data
+
+iris.target
+
+we want create a function with x being our input (Data) and y being our output (target) which will be: f(x) = y 
+
+x = iris.data
+y = iris.target
+
+feature_names = iris.feature_names
+target_names = iris.target_names
+feature_names
+
+
+X = iris.data
+y = iris.target
+
+feature_names = iris.feature_names
+target_names = iris.target_names
+target_names
+
+from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 0.4)
+print(X_train.shape)
+print(X_test.shape)
+
+ from sklearn.model_selection import train_test_split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 0.4)
+print(y_train.shape)
+print(y_test.shape)
+
+from sklearn.neighbors import KNeighborsClassifier 
+knn= KNeighborsClassifier(n_neighbors= 3)
+knn.fit(X_train, y_train)
+
+we need to predictif the model is portent
+
+y_pred = knn.predict(X_test)
+
+from sklearn import metrics
+print(metrics.accuracy_score(y_test, y_pred))
+
+We ha succcessfully developed our model with a %0.983 accuracy however, we can also try other models within the sklearn libery or we can use more n_neighbors parameters (three proves to be most accurate since we only three types of the flower) 
+
+from sklearn.tree import DecisionTreeClassifier 
+knn= DecisionTreeClassifier()
+knn.fit(X_train, y_train)
+
+from sklearn import metrics
+print(metrics.accuracy_score(y_test, y_pred))
+
+If a new data is introduced into the dataset eg. a flower is introducedoduced we will need to predict which flower type it belongs by creating a sample variable
+
+sample = [[3, 5,4,2],[2,3,5,4]]
+predictions = knn.predict(sample)
+pred_species = [iris.target_names[p] for p in predictions]
+print('predictions: ', pred_species)
+
+we now have our first prediction above at a 98% accuracy. however both can be as a result of human error. so we will need to test it 
+
